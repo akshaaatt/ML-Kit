@@ -17,7 +17,7 @@ allprojects {
 
 ```
 dependencies {
-    implementation 'com.github.akshaaatt:ML-Kit:1.0.1'
+    implementation 'com.github.akshaaatt:ML-Kit:1.0.2'
 }
 ```
 
