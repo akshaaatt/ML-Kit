@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private inner class ModeItemAdapter internal constructor(private val detectionModes: Array<DetectionMode>) :
+    private inner class ModeItemAdapter(private val detectionModes: Array<DetectionMode>) :
         RecyclerView.Adapter<ModeItemAdapter.ModeItemViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ModeItemViewHolder {
@@ -85,12 +85,12 @@ class MainActivity : AppCompatActivity() {
 
         override fun getItemCount(): Int = detectionModes.size
 
-        private inner class ModeItemViewHolder internal constructor(view: View) : RecyclerView.ViewHolder(view) {
+        private inner class ModeItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
             private val titleView: TextView = view.findViewById(R.id.mode_title)
             private val subtitleView: TextView = view.findViewById(R.id.mode_subtitle)
 
-            internal fun bindDetectionMode(detectionMode: DetectionMode) {
+            fun bindDetectionMode(detectionMode: DetectionMode) {
                 titleView.setText(detectionMode.titleResId)
                 subtitleView.setText(detectionMode.subtitleResId)
                 itemView.setOnClickListener {

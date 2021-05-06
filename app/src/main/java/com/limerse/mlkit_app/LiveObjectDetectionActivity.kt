@@ -2,7 +2,6 @@ package com.limerse.mlkit_app
 
 import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
-import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.hardware.Camera
@@ -14,7 +13,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.common.internal.Objects
@@ -22,18 +21,17 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.chip.Chip
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.limerse.mlkit.R
+import com.limerse.mlkit.camera.CameraSource
+import com.limerse.mlkit.camera.CameraSourcePreview
 import com.limerse.mlkit.camera.GraphicOverlay
 import com.limerse.mlkit.camera.WorkflowModel
 import com.limerse.mlkit.camera.WorkflowModel.WorkflowState
-import com.limerse.mlkit.camera.CameraSource
-import com.limerse.mlkit.camera.CameraSourcePreview
 import com.limerse.mlkit.objectdetection.MultiObjectProcessor
 import com.limerse.mlkit.objectdetection.ProminentObjectProcessor
 import com.limerse.mlkit.productsearch.BottomSheetScrimView
 import com.limerse.mlkit.productsearch.ProductAdapter
 import com.limerse.mlkit.productsearch.SearchEngine
-import com.limerse.mlkit.settings.PreferenceUtils
-import com.limerse.mlkit.settings.SettingsActivity
+import com.limerse.mlkit.PreferenceUtils
 import java.io.IOException
 
 /** Demonstrates the object detection and visual search workflow using camera preview.  */
@@ -42,7 +40,6 @@ class LiveObjectDetectionActivity : AppCompatActivity(), OnClickListener {
     private var cameraSource: CameraSource? = null
     private var preview: CameraSourcePreview? = null
     private var graphicOverlay: GraphicOverlay? = null
-    private var settingsButton: View? = null
     private var flashButton: View? = null
     private var promptChip: Chip? = null
     private var promptChipAnimator: AnimatorSet? = null
@@ -93,9 +90,6 @@ class LiveObjectDetectionActivity : AppCompatActivity(), OnClickListener {
         flashButton = findViewById<View>(R.id.flash_button).apply {
             setOnClickListener(this@LiveObjectDetectionActivity)
         }
-        settingsButton = findViewById<View>(R.id.settings_button).apply {
-            setOnClickListener(this@LiveObjectDetectionActivity)
-        }
         setUpWorkflowModel()
     }
 
@@ -103,7 +97,6 @@ class LiveObjectDetectionActivity : AppCompatActivity(), OnClickListener {
         super.onResume()
 
         workflowModel?.markCameraFrozen()
-        settingsButton?.isEnabled = true
         bottomSheetBehavior?.state = BottomSheetBehavior.STATE_HIDDEN
         currentWorkflowState = WorkflowState.NOT_STARTED
         cameraSource?.setFrameProcessor(
@@ -153,10 +146,6 @@ class LiveObjectDetectionActivity : AppCompatActivity(), OnClickListener {
                     flashButton?.isSelected = true
                     cameraSource?.updateFlashMode(Camera.Parameters.FLASH_MODE_TORCH)
                 }
-            }
-            R.id.settings_button -> {
-                settingsButton?.isEnabled = false
-                startActivity(Intent(this, SettingsActivity::class.java))
             }
         }
     }
@@ -243,7 +232,7 @@ class LiveObjectDetectionActivity : AppCompatActivity(), OnClickListener {
     }
 
     private fun setUpWorkflowModel() {
-        workflowModel = ViewModelProviders.of(this).get(WorkflowModel::class.java).apply {
+        workflowModel = ViewModelProvider(this).get(WorkflowModel::class.java).apply {
 
             // Observes the workflow state changes, if happens, update the overlay view indicators and
             // camera preview state.

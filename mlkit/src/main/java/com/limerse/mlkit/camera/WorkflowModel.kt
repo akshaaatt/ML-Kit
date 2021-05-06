@@ -8,7 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import com.limerse.mlkit.objectdetection.DetectedObjectInfo
 import com.limerse.mlkit.productsearch.Product
 import com.limerse.mlkit.productsearch.SearchedObject
-import com.limerse.mlkit.settings.PreferenceUtils
+import com.limerse.mlkit.PreferenceUtils
 import com.google.mlkit.vision.barcode.Barcode
 import java.util.HashSet
 

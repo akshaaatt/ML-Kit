@@ -12,7 +12,7 @@ import androidx.core.content.ContextCompat
 import com.limerse.mlkit.R
 import com.limerse.mlkit.camera.GraphicOverlay
 import com.limerse.mlkit.camera.GraphicOverlay.Graphic
-import com.limerse.mlkit.settings.PreferenceUtils
+import com.limerse.mlkit.PreferenceUtils
 
 internal abstract class BarcodeGraphicBase(overlay: GraphicOverlay) : Graphic(overlay) {
 

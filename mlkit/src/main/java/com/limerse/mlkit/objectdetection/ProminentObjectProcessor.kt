@@ -9,7 +9,7 @@ import com.limerse.mlkit.camera.GraphicOverlay
 import com.limerse.mlkit.camera.WorkflowModel
 import com.limerse.mlkit.camera.WorkflowModel.WorkflowState
 import com.limerse.mlkit.camera.FrameProcessorBase
-import com.limerse.mlkit.settings.PreferenceUtils
+import com.limerse.mlkit.PreferenceUtils
 import com.google.mlkit.common.model.LocalModel
 import com.limerse.mlkit.InputInfo
 import com.google.mlkit.vision.common.InputImage

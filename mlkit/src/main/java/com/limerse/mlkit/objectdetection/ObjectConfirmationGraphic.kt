@@ -9,7 +9,7 @@ import androidx.core.content.ContextCompat
 import com.limerse.mlkit.camera.GraphicOverlay
 import com.limerse.mlkit.camera.GraphicOverlay.Graphic
 import com.limerse.mlkit.R
-import com.limerse.mlkit.settings.PreferenceUtils
+import com.limerse.mlkit.PreferenceUtils
 
 /**
  * Similar to the camera reticle but with additional progress ring to indicate an object is getting

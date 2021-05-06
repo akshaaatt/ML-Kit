@@ -2,7 +2,6 @@ package com.limerse.mlkit_app
 
 import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
-import android.content.Intent
 import android.hardware.Camera
 import android.os.Bundle
 import android.util.Log
@@ -10,28 +9,26 @@ import android.view.View
 import android.view.View.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.common.internal.Objects
 import com.google.android.material.chip.Chip
 import com.limerse.mlkit.R
-import com.limerse.mlkit.camera.GraphicOverlay
-import com.limerse.mlkit.camera.WorkflowModel
-import com.limerse.mlkit.camera.WorkflowModel.WorkflowState
 import com.limerse.mlkit.barcodedetection.BarcodeField
 import com.limerse.mlkit.barcodedetection.BarcodeProcessor
 import com.limerse.mlkit.barcodedetection.BarcodeResultFragment
 import com.limerse.mlkit.camera.CameraSource
 import com.limerse.mlkit.camera.CameraSourcePreview
-import com.limerse.mlkit.settings.SettingsActivity
+import com.limerse.mlkit.camera.GraphicOverlay
+import com.limerse.mlkit.camera.WorkflowModel
+import com.limerse.mlkit.camera.WorkflowModel.WorkflowState
 import java.io.IOException
-import java.util.ArrayList
+import java.util.*
 
 class LiveBarcodeScanningActivity : AppCompatActivity(), OnClickListener {
 
     private var cameraSource: CameraSource? = null
     private var preview: CameraSourcePreview? = null
     private var graphicOverlay: GraphicOverlay? = null
-    private var settingsButton: View? = null
     private var flashButton: View? = null
     private var promptChip: Chip? = null
     private var promptChipAnimator: AnimatorSet? = null
@@ -60,9 +57,6 @@ class LiveBarcodeScanningActivity : AppCompatActivity(), OnClickListener {
         flashButton = findViewById<View>(R.id.flash_button).apply {
             setOnClickListener(this@LiveBarcodeScanningActivity)
         }
-        settingsButton = findViewById<View>(R.id.settings_button).apply {
-            setOnClickListener(this@LiveBarcodeScanningActivity)
-        }
 
         setUpWorkflowModel()
     }
@@ -71,7 +65,6 @@ class LiveBarcodeScanningActivity : AppCompatActivity(), OnClickListener {
         super.onResume()
 
         workflowModel?.markCameraFrozen()
-        settingsButton?.isEnabled = true
         currentWorkflowState = WorkflowState.NOT_STARTED
         cameraSource?.setFrameProcessor(BarcodeProcessor(graphicOverlay!!, workflowModel!!))
         workflowModel?.setWorkflowState(WorkflowState.DETECTING)
@@ -108,10 +101,6 @@ class LiveBarcodeScanningActivity : AppCompatActivity(), OnClickListener {
                     }
                 }
             }
-            R.id.settings_button -> {
-                settingsButton?.isEnabled = false
-                startActivity(Intent(this, SettingsActivity::class.java))
-            }
         }
     }
 
@@ -140,7 +129,7 @@ class LiveBarcodeScanningActivity : AppCompatActivity(), OnClickListener {
     }
 
     private fun setUpWorkflowModel() {
-        workflowModel = ViewModelProviders.of(this).get(WorkflowModel::class.java)
+        workflowModel = ViewModelProvider(this).get(WorkflowModel::class.java)
 
         // Observes the workflow state changes, if happens, update the overlay view indicators and
         // camera preview state.
@@ -183,7 +172,7 @@ class LiveBarcodeScanningActivity : AppCompatActivity(), OnClickListener {
             }
         })
 
-        workflowModel?.detectedBarcode?.observe(this, Observer { barcode ->
+        workflowModel?.detectedBarcode?.observe(this, { barcode ->
             if (barcode != null) {
                 val barcodeFieldList = ArrayList<BarcodeField>()
                 barcodeFieldList.add(BarcodeField("Raw Value", barcode.rawValue ?: ""))

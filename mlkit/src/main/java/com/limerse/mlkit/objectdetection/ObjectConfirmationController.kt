@@ -2,7 +2,7 @@ package com.limerse.mlkit.objectdetection
 
 import android.os.CountDownTimer
 import com.limerse.mlkit.camera.GraphicOverlay
-import com.limerse.mlkit.settings.PreferenceUtils
+import com.limerse.mlkit.PreferenceUtils
 
 /**
  * Controls the progress of object confirmation before performing additional operation on the

@@ -45,16 +45,16 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'com.android.volley:volley:1.2.0'
-    implementation 'com.google.android.material:material:1.4.0-alpha01'
+    implementation 'com.google.android.material:material:1.4.0-alpha02'
     implementation "android.arch.lifecycle:extensions:1.1.1"
-    implementation "androidx.annotation:annotation:1.1.0"
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0'
+    implementation 'androidx.annotation:annotation:1.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
     implementation 'androidx.preference:preference-ktx:1.1.1'
 
     implementation 'com.google.android.gms:play-services-mlkit-barcode-scanning:16.1.4'
 
     // Object feature and model
-    implementation 'com.google.mlkit:object-detection:16.2.3'
+    implementation 'com.google.mlkit:object-detection:16.2.4'
     // Custom model
     implementation 'com.google.mlkit:object-detection-custom:16.3.1'
 }

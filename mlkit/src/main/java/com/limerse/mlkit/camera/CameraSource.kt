@@ -12,7 +12,7 @@ import android.view.WindowManager
 import com.google.android.gms.common.images.Size
 import com.limerse.mlkit.R
 import com.limerse.mlkit.Utils
-import com.limerse.mlkit.settings.PreferenceUtils
+import com.limerse.mlkit.PreferenceUtils
 import java.io.IOException
 import java.nio.ByteBuffer
 import java.util.IdentityHashMap
