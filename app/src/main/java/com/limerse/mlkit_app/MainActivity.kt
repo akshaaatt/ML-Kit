@@ -33,6 +33,10 @@ class MainActivity : AppCompatActivity() {
         CUSTOM_MODEL_LIVE(
             R.string.custom_model_live_title,
             R.string.custom_model_live_subtitle
+        ),
+        TRANSLATE_LIVE(
+            R.string.mode_translate_live_title,
+            R.string.mode_translate_live_subtitle
         )
     }
 
@@ -105,6 +109,8 @@ class MainActivity : AppCompatActivity() {
                             activity.startActivity(Intent(activity, LiveBarcodeScanningActivity::class.java))
                         DetectionMode.CUSTOM_MODEL_LIVE ->
                             activity.startActivity(Intent(activity, CustomModelObjectDetectionActivity::class.java))
+                        DetectionMode.TRANSLATE_LIVE ->
+                            activity.startActivity(Intent(activity, LiveTranslateActivity::class.java))
                     }
                 }
             }

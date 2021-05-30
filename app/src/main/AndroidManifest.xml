@@ -47,12 +47,7 @@
             android:screenOrientation="portrait">
         </activity>
 
-        <activity
-            android:name="com.limerse.mlkit.settings.SettingsActivity"
-            android:exported="false"
-            android:label="@string/settings_title"
-            android:screenOrientation="portrait">
-        </activity>
+        <activity android:name=".LiveTranslateActivity"/>
 
         <meta-data
             android:name="com.google.android.gms.version"
