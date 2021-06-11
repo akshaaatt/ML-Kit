@@ -18,7 +18,7 @@
   <string name="cd_flash_button">Toggle camera flash</string>
   <string name="cd_photo_library_button">Upload image</string>
   <string name="prompt_point_at_an_object">Point your camera at an object</string>
-  <string name="prompt_point_at_a_barcode">Point your camera at a barcode</string>
+  <string name="prompt_point_at_a_barcode">Point your camera at a barcode or qrcode</string>
   <string name="prompt_point_at_a_bird">Point your camera at a bird</string>
   <string name="prompt_hold_camera_steady">Keep camera still for a moment</string>
   <string name="prompt_move_camera_closer">Move closer to search</string>
