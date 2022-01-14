@@ -21,6 +21,7 @@ import com.aemerse.mlkit.camera.CameraSourcePreview
 import com.aemerse.mlkit.camera.GraphicOverlay
 import com.aemerse.mlkit.camera.WorkflowModel
 import com.aemerse.mlkit.camera.WorkflowModel.WorkflowState
+import com.google.mlkit.vision.barcode.common.Barcode
 import java.io.IOException
 import java.util.*
 
@@ -172,13 +173,11 @@ class LiveBarcodeScanningActivity : AppCompatActivity(), OnClickListener {
             }
         })
 
-        workflowModel?.detectedBarcode?.observe(this, { barcode ->
-            if (barcode != null) {
-                val barcodeFieldList = ArrayList<BarcodeField>()
-                barcodeFieldList.add(BarcodeField("Raw Value", barcode.rawValue ?: ""))
-                BarcodeResultFragment.show(supportFragmentManager, barcodeFieldList)
-            }
-        })
+        workflowModel?.detectedBarcode?.observe(this) { barcode: Barcode ->
+            val barcodeFieldList = ArrayList<BarcodeField>()
+            barcodeFieldList.add(BarcodeField("Raw Value", barcode.rawValue ?: ""))
+            BarcodeResultFragment.show(supportFragmentManager, barcodeFieldList)
+        }
     }
 
     companion object {

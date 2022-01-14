@@ -3,8 +3,8 @@ package com.aemerse.mlkit.barcodedetection
 import android.graphics.Canvas
 import android.graphics.Path
 import com.aemerse.mlkit.camera.GraphicOverlay
-import com.google.mlkit.vision.barcode.Barcode
 import com.aemerse.mlkit.PreferenceUtils
+import com.google.mlkit.vision.barcode.common.Barcode
 
 /** Guides user to move camera closer to confirm the detected barcode.  */
 internal class BarcodeConfirmingGraphic(overlay: GraphicOverlay, private val barcode: Barcode) :

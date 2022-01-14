@@ -7,7 +7,7 @@ import androidx.annotation.StringRes
 import com.google.android.gms.common.images.Size
 import com.aemerse.mlkit.camera.CameraSizePair
 import com.aemerse.mlkit.camera.GraphicOverlay
-import com.google.mlkit.vision.barcode.Barcode
+import com.google.mlkit.vision.barcode.common.Barcode
 
 /** Utility class to retrieve shared preferences.  */
 object PreferenceUtils {

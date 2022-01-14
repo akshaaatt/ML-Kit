@@ -11,8 +11,8 @@ import com.aemerse.mlkit.camera.WorkflowModel
 import com.aemerse.mlkit.camera.WorkflowModel.WorkflowState
 import com.aemerse.mlkit.camera.FrameProcessorBase
 import com.aemerse.mlkit.PreferenceUtils
-import com.google.mlkit.vision.barcode.Barcode
 import com.google.mlkit.vision.barcode.BarcodeScanning
+import com.google.mlkit.vision.barcode.common.Barcode
 import com.google.mlkit.vision.common.InputImage
 import java.io.IOException
 

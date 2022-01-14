@@ -9,7 +9,7 @@ import com.aemerse.mlkit.objectdetection.DetectedObjectInfo
 import com.aemerse.mlkit.productsearch.Product
 import com.aemerse.mlkit.productsearch.SearchedObject
 import com.aemerse.mlkit.PreferenceUtils
-import com.google.mlkit.vision.barcode.Barcode
+import com.google.mlkit.vision.barcode.common.Barcode
 import java.util.HashSet
 
 /** View model for handling application workflow based on camera preview.  */
