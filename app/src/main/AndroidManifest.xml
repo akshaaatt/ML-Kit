@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.aemerse.mlkit_app"
     android:installLocation="auto">
 
     <uses-feature android:name="android.hardware.camera" />
@@ -16,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="com.aemerse.mlkit_app.MainActivity"
+        <activity android:name="com.limurse.mlkit_app.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,30 +24,30 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.aemerse.mlkit_app.LiveObjectDetectionActivity"
+            android:name="com.limurse.mlkit_app.LiveObjectDetectionActivity"
             android:exported="false"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.aemerse.mlkit_app.LiveBarcodeScanningActivity"
+            android:name="com.limurse.mlkit_app.LiveBarcodeScanningActivity"
             android:exported="false"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.aemerse.mlkit_app.StaticObjectDetectionActivity"
+            android:name="com.limurse.mlkit_app.StaticObjectDetectionActivity"
             android:exported="false"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.aemerse.mlkit_app.CustomModelObjectDetectionActivity"
+            android:name="com.limurse.mlkit_app.CustomModelObjectDetectionActivity"
             android:exported="false"
             android:screenOrientation="portrait">
         </activity>
 
-        <activity android:name="com.aemerse.mlkit_app.LiveTranslateActivity"/>
+        <activity android:name="com.limurse.mlkit_app.LiveTranslateActivity"/>
 
         <meta-data
             android:name="com.google.android.gms.version"
